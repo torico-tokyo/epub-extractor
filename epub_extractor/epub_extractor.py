@@ -194,8 +194,10 @@ class ImagePage(ImageElementBase):
 
     @cached_property
     def image_element(self) -> Element:
-
-        if self.item_element.attrib.get('properties') == 'svg':
+        properties = self.item_element.attrib.get('properties', None)
+        # 'svg ' という文字列のケースがあるので strip して対応する。
+        # SVG, svg+xxx などのケースがあるようなら見つけ次第対応する。
+        if properties and properties.strip() == 'svg':
             # SVGラッピング 日本のコミックEPUBでよくある形式
             svg = self.page_xhtml_etree.find(
                 './/{http://www.w3.org/2000/svg}svg'
