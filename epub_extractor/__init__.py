@@ -2,5 +2,5 @@
 # coding: utf-8
 
 __author__ = 'torico'
-__version__ = '0.4.4'
+__version__ = '0.4.5'
 __license__ = 'BSD'
